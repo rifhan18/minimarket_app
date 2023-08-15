@@ -1,3 +1,4 @@
+# Data item persediaan minimarket
 items = {
     "item1": {
         "name": "indomie",
