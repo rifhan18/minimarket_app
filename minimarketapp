@@ -49,6 +49,7 @@ def lihat_menu():
     kembali_ke_menu()
 
 
+# Fungsi untuk kembali ke menu utama
 def kembali_ke_menu():
   print("\n")
   input("Tekan Enter untuk Kembali...")
