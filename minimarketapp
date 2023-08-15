@@ -35,7 +35,7 @@ def lihat_menu():
   elif (pilih_stok == "2"):
     add_item()
   elif (pilih_stok == "3"):
-    add_stock()
+    edit_stock()
   elif (pilih_stok == "4"):
     change_price()
   elif (pilih_stok == "5"):
@@ -65,7 +65,7 @@ def list_items():
 
 
 # Fungsi untuk menambahkan jenis item ke dalam persediaan
-def edit_item(item_id, name, price, stock):
+def add_item(item_id, name, price, stock):
   if item_id not in items:
     items[item_id] = {"name": name, "price": price, "stock": stock}
     print(
@@ -78,7 +78,7 @@ def edit_item(item_id, name, price, stock):
 
 
 # Fungsi untuk merubah jumlah item yang tersedia dalam persediaan
-def add_stock(item_id, stock):
+def edit_stock(item_id, stock):
   if item_id in items:
     items[item_id]["stock"] = stock
     print(
