@@ -1,0 +1,132 @@
+items = {
+    "item1": {
+        "name": "indomie",
+        "price": 3500,
+        "stock": 200
+    },
+    "item2": {
+        "name": "cimory",
+        "price": 5000,
+        "stock": 250
+    },
+    "item3": {
+        "name": "chitato",
+        "price": 9000,
+        "stock": 300
+    }
+}
+
+
+# Fungsi untuk menampilkan menu
+def lihat_menu():
+  print("=== ARSEL MINIMARKET ===")
+  print("[1] Lihat Daftar Barang")
+  print("[2] Tambah Nama Barang")
+  print("[3] Edit Stok Barang")
+  print("[4] Edit Harga")
+  print("[5] Hapus Stok")
+  print("[6] Pembelian")
+  print("[0] Exit")
+  print("---------------------")
+  pilih_stok = input("Pilih Barang> ")
+  if (pilih_stok == "1"):
+    list_items()
+  elif (pilih_stok == "2"):
+    add_item()
+  elif (pilih_stok == "3"):
+    add_stock()
+  elif (pilih_stok == "4"):
+    change_price()
+  elif (pilih_stok == "5"):
+    delete_stock()
+  elif (pilih_stok == "6"):
+    buy_item()
+  elif (pilih_stok == "0"):
+    exit()
+  else:
+    print("stok tidak ditemukan!")
+    kembali_ke_menu()
+
+
+def kembali_ke_menu():
+  print("\n")
+  input("Tekan Enter untuk Kembali...")
+  lihat_menu()
+
+
+# Fungsi untuk menampilkan list item persediaan
+def list_items():
+  for item in items:
+    print(
+        f"{item}: { items[item]['name']}, price { items[item]['price']}, stock { items[item]['stock']}"
+    )
+
+
+# Fungsi untuk menambahkan jenis item ke dalam persediaan
+def edit_item(item_id, name, price, stock):
+  if item_id not in items:
+    items[item_id] = {"name": name, "price": price, "stock": stock}
+    print(
+        f"item {name} telah ditambahkan dengan harga {price},- jumlah {stock}."
+    )
+  else:
+    print("maaf, item id sudah ada")
+
+  kembali_ke_menu()
+
+
+# Fungsi untuk merubah jumlah item yang tersedia dalam persediaan
+def add_stock(item_id, stock):
+  if item_id in items:
+    items[item_id]["stock"] = stock
+    print(
+        f"stock item {items[item_id]['name']} telah diubah menjadi {stock} buah."
+    )
+  else:
+    print("maaf, item stock tidak ditemukan")
+
+  kembali_ke_menu()
+
+
+# Fungsi untuk merubah harga dalam persediaan
+def change_price(item_id, price):
+  if item_id in items:
+    items[item_id]["price"] = price
+    print(
+        f"change price {items[item_id]['name']} telah diubah menjadi Rp {price}.-."
+    )
+  else:
+    print("maaf, harga tidak ditemukan")
+
+  kembali_ke_menu()
+
+
+# Fungsi untuk menghapus item dalam persediaan
+def delete_item(item_id, name):
+  if item_id in items:
+    items[item_id]["name"] = name
+    print(f"delete stock {items[item_id]['name']} telah dihapus {name} !")
+  else:
+    print("maaf, nama item tidak ditemukan!")
+
+  kembali_ke_menu()
+
+
+# Fungsi untuk membeli item dalam program minimarket
+def buy_item(item, quantity):
+  if item in items:
+    if items[item]["stock"] >= quantity:
+      total_price = items[item]["price"] * quantity
+    items[item]["stock"] -= quantity
+    print(f"Total harga pembelian adalah {total_price}.")
+  else:
+    print("Maaf, stok barang tidak mencukupi")
+
+  kembali_ke_menu()
+
+
+if __name__ == "__main__":
+
+  while (True):
+    lihat_menu()
+    break
